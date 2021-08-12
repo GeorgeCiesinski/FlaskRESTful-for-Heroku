@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask
 from flask_restful import Api
 from flask_jwt import JWT
@@ -10,8 +12,8 @@ from db import db
 
 # Create flask app
 app = Flask(__name__)
-# SQLALCHEMY database will live at the root folder of the project
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'  # Can be PostgreSQL
+# Database URI points to Heroku PostgreSQL if exists (production) or SQLite3 if doesn't (development)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
 # Stop FlaskSQLAlchemy from tracking changes so we can use the base SQLAlchemy tracker instead
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Debug mode

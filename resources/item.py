@@ -29,6 +29,7 @@ class Item(Resource):
 			return item.json()
 		return {'message': 'Item not found'}, 404
 
+	@jwt_required()
 	def post(self, name):
 		data = self.parser.parse_args()
 		if ItemModel.find_by_name(name):
@@ -45,6 +46,7 @@ class Item(Resource):
 
 		return item.json(), 201
 
+	@jwt_required()
 	def delete(self, name):
 		item = ItemModel.find_by_name(name)
 		if item:
@@ -72,5 +74,6 @@ class Item(Resource):
 
 class ItemList(Resource):
 
+	@jwt_required()
 	def get(self):
 		return {'items': [item.json() for item in ItemModel.query.all()]}

@@ -19,13 +19,6 @@ app.secret_key = 'george'
 # Create an api for flask_restful
 api = Api(app)
 
-
-# Creates the data.db file before the first request is ran.
-@app.before_first_request
-def create_tables():
-	db.create_all()  # Relies on the model being imported for it to see the model/table
-
-
 jwt = JWT(app, authenticate, identity)
 
 # Add resource to api

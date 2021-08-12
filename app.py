@@ -13,7 +13,7 @@ from db import db
 # Create flask app
 app = Flask(__name__)
 # Database URI points to Heroku PostgreSQL if exists (production) or SQLite3 if doesn't (development)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///data.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URI', 'sqlite:///data.db')
 # Stop FlaskSQLAlchemy from tracking changes so we can use the base SQLAlchemy tracker instead
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Debug mode

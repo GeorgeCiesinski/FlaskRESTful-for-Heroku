@@ -17,11 +17,8 @@ pip install -r requirements.txt
 cd app
 python app.py
 ```
-4. Use Postman to interact with API. 
+4. Interact with API using Postman or another service. 
 
-# Interacting with API
-
-The API URL changes depending on whether it is being run locally, or is deployed on Heroku. For the below
 
 # Technology
 
